@@ -29,7 +29,7 @@ const dishesShema = new mongoose_1.Schema({
     restaurant: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "Restaurant",
-        required: [true, 'Debe exitir una referencia al restaurante']
+        required: [true, 'Debee exitir una referencia al restaurante']
     }
 });
 dishesShema.pre('save', function (next) {
