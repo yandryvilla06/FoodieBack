@@ -7,9 +7,9 @@ const dishesShema = new mongoose_1.Schema({
         type: Date
     },
     img: [{
-            type: String,
-            required: [true, 'Img  dishes is required']
-        }],
+        type: String,
+        required: [true, 'Img  dishes is required']
+    }],
     description: {
         type: String,
         required: [true, 'Description  dishes is required']
@@ -29,7 +29,7 @@ const dishesShema = new mongoose_1.Schema({
     restaurant: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "Restaurant",
-        required: [true, 'Debe exitir una referencia al restaurante']
+        required: [true, 'Debee exitir una referencia al restaurante de Yandrisito']
     }
 });
 dishesShema.pre('save', function (next) {
