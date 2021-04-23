@@ -9,6 +9,31 @@ import { Dishes } from '../models/dishes.model';//modelo
 const dishesRoutes = Router();
 const fileSystem = new FileSystem();
 
+
+//Obtener dishes paginados GET 
+dishesRoutes.get('/', [verificaToken2], async (req: any, res: Response) => {
+
+    let page = Number(req.query.page) || 1;
+
+    let skip = page - 1;
+    skip = skip * 10;
+
+    const dishes = await Dishes.find().sort({ _id: -1 }).skip(skip).limit(5).exec();
+
+    res.json({
+
+        oka: true,
+        page,
+        dishes
+    });
+
+
+
+});
+
+
+
+
 //necesito verificar el token d emi restaurante para saber el restaurante q tiene esos platos
 //me crea un plato de mi restaurante
 dishesRoutes.post('/', [verificaToken2], (req: any, res: Response) => {
@@ -113,9 +138,9 @@ dishesRoutes.get('/imagen/:restaurantid/:img', (req: any, res: Response) => {
 
     res.sendFile(pathFoto);
 
-
-
 }
+
+
 
 )
 
