@@ -18,6 +18,20 @@ const autenticacion_1 = require("../middlewares/autenticacion");
 const dishes_model_1 = require("../models/dishes.model"); //modelo
 const dishesRoutes = express_1.Router();
 const fileSystem = new file_system_1.default();
+//Obtener dishes paginados GET 
+dishesRoutes.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    //req.query.page leo los parametros opcionales ?page=1
+    let page = Number(req.query.page) || 1;
+    let skip = page - 1;
+    skip = skip * 10;
+    //solo me mostrara 3 platos ya que mi limite fijado 
+    const dishes = yield dishes_model_1.Dishes.find().sort({ _id: -1 }).skip(skip).limit(3).populate('restaurant', '-password').exec();
+    res.json({
+        ok: true,
+        page,
+        dishes
+    });
+}));
 //necesito verificar el token d emi restaurante para saber el restaurante q tiene esos platos
 //me crea un plato de mi restaurante
 dishesRoutes.post('/', [autenticacion_1.verificaToken2], (req, res) => {
