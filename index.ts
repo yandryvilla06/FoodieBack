@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import userRoutes from './routes/usuario';
 import restaurantRoutes from './routes/restaurant';
 import dishesRoutes from './routes/dishes';
+import cartRoutes from './routes/cart';
 import fileUpload from 'express-fileupload';
 
 
@@ -28,7 +29,7 @@ server.app.use(cors({ origin: true, credentials: true }))
 server.app.use('/user', userRoutes);
 server.app.use('/restaurant', restaurantRoutes);
 server.app.use('/dishes', dishesRoutes);
-
+server.app.use('/cart', cartRoutes);
 
 // Conectar DB
 mongoose.connect('mongodb://localhost:27017/bd_foodie',
