@@ -22,6 +22,7 @@ export default class Token {
 
     }
 
+
     static comprobarToken(userToken: string) {
 
         return new Promise((resolve, reject) => {
@@ -62,6 +63,8 @@ export default class Token {
 
 
     }
+
+
 
 
 

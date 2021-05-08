@@ -13,12 +13,9 @@ const restaurantSchema = new Schema({
         type: Date
     },
 
-    avatar: {
-
+    avatar: [{
         type: String,
-        unique: true,
-        default: 'user.png'
-    },
+    }],
 
     address: {
         type: String,

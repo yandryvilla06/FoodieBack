@@ -20,12 +20,9 @@ const usuarioSchema = new Schema({
         unique: true,
     },
 
-    avatar: {
-
+    avatar: [{
         type: String,
-        unique: true,
-        default: 'user.png'
-    },
+    }],
     email: {
         type: String,
         unique: true,
@@ -57,7 +54,7 @@ interface IUsuario extends Document {
     nickname: string;
     email: string;
     password: string;
-    avatar: string;
+    avatar: string[];
 
 
     compararPassword(password: string): boolean;

@@ -1,22 +1,19 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cart = void 0;
 const mongoose_1 = require("mongoose");
-const cartShema = new mongoose_1.Schema({
-    date: {
-        type: Date
-    },
+const mongoose_2 = __importDefault(require("mongoose"));
+const Schema = mongoose_2.default.Schema;
+const cartShema = new Schema({
     amount: {
-        type: Number
+        type: Number,
+        required: true
     },
-    dishes: {
-        type: mongoose_1.Schema.Types.ObjectId,
-        ref: "Dishes2",
-        required: [true, 'Debe exitir una referencia al usuario comprador']
+    products: {
+        type: [],
     }
-});
-cartShema.pre('save', function (next) {
-    this.date = new Date();
-    next();
 });
 exports.Cart = mongoose_1.model('Cart', cartShema);

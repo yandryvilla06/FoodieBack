@@ -1,37 +1,35 @@
-import { Schema, Document, model } from 'mongoose';
-import bcrypt from 'bcrypt';
+import { Document, model } from 'mongoose';
+import mongoose from 'mongoose';
+
+const Schema = mongoose.Schema;
+
 
 const cartShema = new Schema<ICart>({
 
-    date: {
-        type: Date
-    },
     amount: {
-        type: Number
+        type: Number,
+        required: true
     },
-    dishes: {
-        type: Schema.Types.ObjectId,
-        ref: "Dishes2",
-        required: [true, 'Debe exitir una referencia al usuario comprador']
+    products: {
+        type: [],
     }
 
+
 });
 
 
-cartShema.pre<ICart>('save', function (next) {
+// cartShema.pre<ICart>('save', function (next) {
 
-    this.date = new Date();
-    next();
-});
+//     this.date = new Date();
+//     next();
+// });
 
 
 
 interface ICart extends Document {
 
-    date: Date;
     amount: number;
     dishes: string;
-
 }
 
 export const Cart = model<ICart>('Cart', cartShema);

@@ -47,10 +47,8 @@ export const verificaToken2 = (req: any, res: Response, next: NextFunction) => {
 
         });
 
-
-
-
 }
+
 
 
 

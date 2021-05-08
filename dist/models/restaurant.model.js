@@ -14,11 +14,9 @@ const restaurantSchema = new mongoose_1.Schema({
     registerDate: {
         type: Date
     },
-    avatar: {
-        type: String,
-        unique: true,
-        default: 'user.png'
-    },
+    avatar: [{
+            type: String,
+        }],
     address: {
         type: String,
         required: [true, 'Name restaurant is required']

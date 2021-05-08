@@ -19,11 +19,9 @@ const usuarioSchema = new mongoose_1.Schema({
         type: String,
         unique: true,
     },
-    avatar: {
-        type: String,
-        unique: true,
-        default: 'user.png'
-    },
+    avatar: [{
+            type: String,
+        }],
     email: {
         type: String,
         unique: true,

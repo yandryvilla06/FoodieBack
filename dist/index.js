@@ -10,7 +10,6 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const usuario_1 = __importDefault(require("./routes/usuario"));
 const restaurant_1 = __importDefault(require("./routes/restaurant"));
 const dishes_1 = __importDefault(require("./routes/dishes"));
-const cart_1 = __importDefault(require("./routes/cart"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const server = new server_1.default();
 // Body parser
@@ -24,7 +23,6 @@ server.app.use(cors_1.default({ origin: true, credentials: true }));
 server.app.use('/user', usuario_1.default);
 server.app.use('/restaurant', restaurant_1.default);
 server.app.use('/dishes', dishes_1.default);
-server.app.use('/cart', cart_1.default);
 // Conectar DB
 mongoose_1.default.connect('mongodb://localhost:27017/bd_foodie', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
     if (err)

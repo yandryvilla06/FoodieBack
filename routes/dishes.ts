@@ -20,7 +20,7 @@ dishesRoutes.get('/', async (req: any, res: Response) => {
     skip = skip * 10;
 
     //solo me mostrara 3 platos ya que mi limite fijado 
-    const dishes = await Dishes.find().sort({ _id: -1 }).skip(skip).limit(10).populate('restaurant', '-password').exec();
+    const dishes = await Dishes.find().sort({ _id: -1 }).skip(skip).limit(3).populate('restaurant', '-password').exec();
 
     res.json({
 
